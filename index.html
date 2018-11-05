@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Exercício 4 - JS & jQuery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="h1" class="container-fluid bg-light col-sm-12">
+        <h1 class="text-center">
+            TCS Banking
+        </h1>
+        <div class="form-group col-xs-8 col-xs-offset-2">
+            <label for="dpdType">Tipo de Pessoa</label>
+            <select name="dpdType" id="dpdType" class="form-control">
+                <option value="select" selected>Selecione um tipo</option>
+                <option value="physicalPerson">Pessoa física</option>
+                <option value="noAccount">Sem conta</option>
+                <option value="legalPerson">Pessoa jurídica</option>
+            </select>
+        </div>
+
+        <div id="physicalPerson" class="container-fluid col-xs-12 bg-light option">
+            <form id="physicalPerson-form" onsubmit="SavePhysicalPerson(); return false;" class="col-xs-8 col-xs-offset-2" hidden>
+                <div class="col-xs-12">
+                    <div class="col-xs-6 h3">Informações Pessoais</div>
+                    <div class="col-xs-6 h3 reference" hidden>Informações da Referência</div>
+                    <div class="col-xs-6 dependent h3" hidden>Informações do Dependente</div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-6">
+                        <label for="dpdDependents">Possui dependente?</label>
+                        <select name="dpdDependents" id="dpdDependents" class="form-control">
+                            <option value="select" selected disabled>Selecione</option>
+                            <option value="no">Não</option>
+                            <option value="yes">Sim</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-6 reference">
+                        <div class="form-group col-xs-12">
+                            <label for="referenceName">Nome da Referência</label>
+                            <input id="referenceName" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6 dependent">
+                        <div class="form-group col-xs-12">
+                            <label for="dependentName">Nome do Dependente</label>
+                            <input id="dependentName" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-3 ">
+                        <label for="physicalPersonName">Nome</label>
+                        <input id="physicalPersonName" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="physicalPersonPhone">Telefone</label>
+                        <input id="physicalPersonPhone" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-6 reference">
+                        <div class="form-group col-xs-12">
+                            <label for="referencePhone">Telefone da Referência</label>
+                            <input id="referencePhone" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-3 dependent">
+                        <div class="form-group col-xs-12">
+                            <label for="dependentPhone">Telefone do Dependente</label>
+                            <input id="dependentPhone" class="form-control" type="text" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-3 dependent">
+                        <div class="form-group col-xs-12">
+                            <label for="dependentCPF">CPF do Dependente</label>
+                            <input id="dependentCPF" class="form-control" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-12">
+                        <label for="physicalPersonAddress">Endereço</label>
+                        <input id="physicalPersonAddress" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="noAccount" class="container-fluid col-xs-12 bg-light option">
+            <form id="noAccount-form" onsubmit="SaveNoAccount(); return false;" class="col-xs-8 col-xs-offset-2" hidden>
+                <h3>Informações Pessoais</h3>
+                <div class="form-group col-xs-12 ">
+                    <label for="noAccountName">Nome</label>
+                    <input id="noAccountName" class="form-control" type="text" required>
+                </div>
+                <div class="form-group col-xs-6 ">
+                    <label for="noAccountPhone">Telefone</label>
+                    <input id="noAccountPhone" class="form-control" type="text" required>
+                </div>
+                <div class="form-group col-xs-6 ">
+                    <label for="noAccountCPF">CPF</label>
+                    <input id="noAccountCPF" class="form-control" type="text" required>
+                </div>
+                <div class="form-group col-xs-12 ">
+                    <label for="noAccountObs">Observações</label>
+                    <input id="noAccountObs" class="form-control" type="text" required>
+                </div>
+            </form>
+        </div>
+        <div id="legalPerson" class="container-fluid col-xs-12 bg-light option">
+            <form id="legalPerson-form" onsubmit="SaveLegalPerson(); return false;" class="col-xs-8 col-xs-offset-2" hidden>
+                <div class="col-xs-12">
+                    <h3 class="col-xs-6">Informações Jurídicas</h3>
+                    <h3 class="col-xs-6 superior inferior">Informações Limite</h3>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group col-xs-3">
+                        <label for="dpdLimit">Limite</label>
+                        <select name="dpdLimit" id="dpdLimit" class="form-control">
+                            <option value="select" selected disabled>Selecione</option>
+                            <option value="inferior">Inferior a 100.000,00</option>
+                            <option value="superior">Superior ou igual a 100.000,00</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-xs-3"></div>
+                    <div class="form-group col-xs-6 inferior">
+                        <label for="inferiorValue">Valor</label>
+                        <input id="inferiorValue" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-3 superior">
+
+                        <label for="referenceName">Referência Pessoal</label>
+                        <input id="referenceName" class="form-control" type="text" required>
+
+                    </div>
+                    <div class="form-group col-xs-3 superior">
+
+                        <label for="referencePhone">Telefone Referência</label>
+                        <input id="referencePhone" class="form-control" type="text" required>
+
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-6">
+                        <label for="legalPersonName">Nome</label>
+                        <input id="legalPersonName" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-6 superior">
+                        <label for="dpdBank">Banco</label>
+                        <select name="dpdBank" id="dpdBank" class="form-control">
+                            <option value="select" selected>Selecione</option>
+                            <option value="bradesco">Bradesco</option>
+                            <option value="itau">Itaú</option>
+                            <option value="santander">Santander</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <div class="form-group col-xs-3">
+                        <label for="legalPersonAddress">Endereço</label>
+                        <input id="legalPersonAddress" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-3">
+                        <label for="legalPersonPhone">Telefone</label>
+                        <input id="legalPersonPhone" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-3 superior">
+                        <label for="accountAgency">Agência</label>
+                        <input id="accountAgency" class="form-control" type="text" required>
+                    </div>
+                    <div class="form-group col-xs-3 superior">
+                        <label for="accountNumber">Conta</label>
+                        <input id="accountNumber" class="form-control" type="text" required>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
