@@ -59,25 +59,25 @@
                     </div>
                     <div class="form-group col-xs-3">
                         <label for="physicalPersonPhone">Telefone</label>
-                        <input id="physicalPersonPhone" class="form-control" type="text" required>
+                        <input id="physicalPersonPhone" class="form-control phone" type="text" required>
                     </div>
                     <div class="form-group col-xs-6 reference">
                         <div class="form-group col-xs-12">
                             <label for="referencePhone">Telefone da Referência</label>
-                            <input id="referencePhone" class="form-control" type="text" required>
+                            <input id="referencePhone" class="form-control phone" type="text" required>
                         </div>
                     </div>
                     <div class="form-group col-xs-3 dependent">
                         <div class="form-group col-xs-12">
                             <label for="dependentPhone">Telefone do Dependente</label>
-                            <input id="dependentPhone" class="form-control" type="text" required>
+                            <input id="dependentPhone" class="form-control phone" type="text" required>
                         </div>
                     </div>
 
                     <div class="form-group col-xs-3 dependent">
                         <div class="form-group col-xs-12">
                             <label for="dependentCPF">CPF do Dependente</label>
-                            <input id="dependentCPF" class="form-control" type="text" required>
+                            <input id="dependentCPF" class="form-control cpf" type="text" required>
                         </div>
                     </div>
                 </div>
@@ -86,6 +86,9 @@
                         <label for="physicalPersonAddress">Endereço</label>
                         <input id="physicalPersonAddress" class="form-control" type="text" required>
                     </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <input id="btnPhysicalPerson" class="btnSubmit btn btn-primary col-xs-4 col-xs-offset-4" type="submit" value="Salvar">
                 </div>
             </form>
         </div>
@@ -99,15 +102,18 @@
                 </div>
                 <div class="form-group col-xs-6 ">
                     <label for="noAccountPhone">Telefone</label>
-                    <input id="noAccountPhone" class="form-control" type="text" required>
+                    <input id="noAccountPhone" class="form-control phone" type="text" required>
                 </div>
                 <div class="form-group col-xs-6 ">
                     <label for="noAccountCPF">CPF</label>
-                    <input id="noAccountCPF" class="form-control" type="text" required>
+                    <input id="noAccountCPF" class="form-control cpf" type="text" required>
                 </div>
                 <div class="form-group col-xs-12 ">
                     <label for="noAccountObs">Observações</label>
                     <input id="noAccountObs" class="form-control" type="text" required>
+                </div>
+                <div class="form-group col-xs-12">
+                    <input id="btnNoAccount" class="btnSubmit btn btn-primary col-xs-4 col-xs-offset-4" type="submit" value="Salvar">
                 </div>
             </form>
         </div>
@@ -128,8 +134,8 @@
                     </div>
                     <div class="form-group col-xs-3"></div>
                     <div class="form-group col-xs-6 inferior">
-                        <label for="inferiorValue">Valor</label>
-                        <input id="inferiorValue" class="form-control" type="text" required>
+                        <label for="inferiorValue">Valor (R$)</label>
+                        <input id="inferiorValue" class="form-control money" type="text" required>
                     </div>
                     <div class="form-group col-xs-3 superior">
 
@@ -140,7 +146,7 @@
                     <div class="form-group col-xs-3 superior">
 
                         <label for="referencePhone">Telefone Referência</label>
-                        <input id="referencePhone" class="form-control" type="text" required>
+                        <input id="referencePhone" class="form-control phone" type="text" required>
 
                     </div>
                 </div>
@@ -167,16 +173,19 @@
                     </div>
                     <div class="form-group col-xs-3">
                         <label for="legalPersonPhone">Telefone</label>
-                        <input id="legalPersonPhone" class="form-control" type="text" required>
+                        <input id="legalPersonPhone" class="form-control phone" type="text" required>
                     </div>
                     <div class="form-group col-xs-3 superior">
                         <label for="accountAgency">Agência</label>
-                        <input id="accountAgency" class="form-control" type="text" required>
+                        <input id="accountAgency" class="form-control agency" type="text" required>
                     </div>
                     <div class="form-group col-xs-3 superior">
                         <label for="accountNumber">Conta</label>
-                        <input id="accountNumber" class="form-control" type="text" required>
+                        <input id="accountNumber" class="form-control account" type="text" required>
                     </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <input id="btnLegalPerson" class="btnSubmit btn btn-primary col-xs-4 col-xs-offset-4" type="submit" value="Salvar" >
                 </div>
             </form>
         </div>
